@@ -32,23 +32,39 @@ function UserForm() {
     phone: "",
   });
 
-
   const [missingFields, setMissingFields] = useState([]);
   const [setIsFormSubmitted] = useState(false);
+  const [nameError, setNameError] = useState("");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserDataState((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+ 
+    if (name === "phone") {
+      const formattedPhone = value.replace(/\D/g, "").slice(0, 10); 
+      setUserDataState((prevData) => ({
+        ...prevData,
+        [name]: formattedPhone,
+      }));
+    } else {
+      setUserDataState((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+
+  
+    if (name === "name" && /[^a-zA-Z ]/.test(value)) {
+      setNameError("Only letters are allowed in the name.");
+    } else {
+      setNameError("");
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
 
     const missing = [];
     Object.keys(userData).forEach((key) => {
@@ -57,19 +73,39 @@ function UserForm() {
       }
     });
 
-
     if (missing.length > 0) {
       setMissingFields(missing);
       onOpen();
       return;
     }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(userData.email)) {
+      toast({
+        title: "Invalid Email.",
+        description: "Please enter a valid email address.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
 
-    const newUserData = { ...userData, id: userData.id || uuidv4() }; // Generate ID if not present
-    setUserData(newUserData); // Update the context with the new data
-    setUserDataState({ id: "", name: "", email: "", address: "", phone: "" }); // Reset form fields
-    setIsFormSubmitted(true); // Mark form as submitted
+    if (userData.phone.length !== 10) {
+      toast({
+        title: "Invalid Phone Number.",
+        description: "Phone number should be 10 digits.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
 
+    const newUserData = { ...userData, id: userData.id || uuidv4() }; 
+    setUserData(newUserData); 
+    setUserDataState({ id: "", name: "", email: "", address: "", phone: "" }); 
+    setIsFormSubmitted(true); 
 
     toast({
       title: "User data saved.",
@@ -97,13 +133,19 @@ function UserForm() {
                 Name
               </Text>
               <Input
-                type="String"
+                type="text"
                 id="name"
                 name="name"
                 value={userData.name}
                 onChange={handleChange}
                 required
+                pattern="[A-Za-z ]+" 
               />
+              {nameError && (
+                <Text color="red" fontSize="sm" mt={1}>
+                  {nameError}
+                </Text>
+              )}
             </Box>
             <Box w="50%" borderColor={'black'}>
               <Text as="label" htmlFor="email" ml={175} fontWeight="bold" fontSize={20}>
@@ -119,8 +161,9 @@ function UserForm() {
               />
             </Box>
           </HStack>
+
           <Box w="100%" borderColor={'black'}>
-            <Text as="label" htmlFor="address" ml = {350} fontWeight="bold" fontSize={20}>
+            <Text as="label" htmlFor="address" ml={350} fontWeight="bold" fontSize={20}>
               Address
             </Text>
             <Input
@@ -133,31 +176,30 @@ function UserForm() {
           </Box>
 
           <Box w="100%" borderColor={'black'}>
-            <Text as="label" htmlFor="phone" fontWeight="bold" ml = {350} fontSize={20}>
+            <Text as="label" htmlFor="phone" fontWeight="bold" ml={350} fontSize={20}>
               Phone
             </Text>
             <Input
-              type="number"
+              type="text" 
               id="phone"
               name="phone"
-              value={userData.phone}
+              value={`${userData.phone}`}
               onChange={handleChange}
+              maxLength="10" 
             />
           </Box>
 
-            <Button type="submit" colorScheme="blue" w="full" borderColor={'black'} fontWeight="bold" fontSize={20}>
-              Save
-            </Button>
+          <Button type="submit" colorScheme="blue" w="full" borderColor={'black'} fontWeight="bold" fontSize={20}>
+            Save
+          </Button>
         </VStack>
       </form>
-
 
       {missingFields.length > 0 && (
         <Text color="red" mt={4}>
           Please fill in the following fields: {missingFields.join(", ")}.
         </Text>
       )}
-
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
