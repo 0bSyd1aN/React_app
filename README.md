@@ -2,7 +2,7 @@
 
 ## Overview
 - This is a React-based web application featuring a Counter, User Data Form, and Rich Text Editors. 
-- The application utilizes **Chakra UI** for the frontend design, and **TinyMCE** for the rich text editor integration. 
+- The application utilizes **Chakra UI** for the frontend design, and **TipTap** for the rich text editor integration. 
 - The frontend is built entirely using **React**.
 
 ![Demo App](public/screenshot-for-readme.png) 
@@ -21,7 +21,7 @@
 - Displays a pop-up warning when there are unsaved changes, if the user tries to close the browser.
 
 ### 3. Rich Text Editors
-- Visualizes user data in a rich text editor powered by **TinyMCE**.
+- Visualizes user data in a rich text editor powered by **TipTap**.
 - Includes formatting options such as bold, italic, underline, and lists.
 - Data is persisted across sessions.
 
@@ -30,14 +30,14 @@
 - **Frontend:**
   - **React** (Functional Components, Hooks)
   - **Chakra UI** (for UI components and styling)
-  - **TinyMCE** (for rich text editing)
+  - **TipTap** (for rich text editing)
 
 ## Features
 - **Responsive Design:** Built using Chakra UI for a modern, responsive layout that adapts to all screen sizes.
 - **State Management:** Uses React's `useState`, `useEffect`, and Context API to manage application state efficiently.
 - **Smooth Animations:** Utilizes React Spring for smooth, interactive animations and transitions across the app.
 - **Persistent Data:** Form data and user inputs are saved locally in the browser using localStorage or RTK.
-- **Rich Text Editing:** Powered by TinyMCE, allowing users to format text and persist it in the app.
+- **Rich Text Editing:** Powered by TipTap, allowing users to format text and persist it in the app.
 
 ## Setup
 
