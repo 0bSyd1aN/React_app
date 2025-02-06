@@ -39,7 +39,7 @@ function Counter() {
       borderWidth="3px"
       borderColor={'black'}
       borderRadius="md"
-      height={400}
+      height={300}
       align="center"
       style={{
         background: backgroundColor,
