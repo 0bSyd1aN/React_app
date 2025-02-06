@@ -6,7 +6,7 @@ function UserDataDisplay() {
   const { userData } = useUserDataContext();
 
   return (
-    <Box p={4} borderWidth="3px" borderRadius="md" mt={-20} borderColor={'black'}>
+    <Box p={4} borderWidth="3px" borderRadius="md"  borderColor={'black'}>
       <Text fontSize="lg" fontWeight="bold">User Data (JSON Format)</Text>
       {userData ? (
         <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>

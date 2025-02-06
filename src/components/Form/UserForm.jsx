@@ -117,7 +117,7 @@ function UserForm() {
   };
 
   return (
-    <Box flex="1" p={4} borderWidth="3px" borderRadius="md" height={-100} mt={-20} borderColor={'black'}>
+    <Box flex="1" p={4} borderWidth="3px" borderRadius="md" height={-100} borderColor={'black'}>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
           {userData.id && (
