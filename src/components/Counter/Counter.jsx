@@ -35,10 +35,11 @@ function Counter() {
       spacing={4}
       p={4}
       mt={-5}
+      mb={-20}
       borderWidth="3px"
       borderColor={'black'}
       borderRadius="md"
-      height={300}
+      height={400}
       align="center"
       style={{
         background: backgroundColor,

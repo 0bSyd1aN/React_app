@@ -97,7 +97,7 @@ function UserForm() {
                 Name
               </Text>
               <Input
-                type="text"
+                type="String"
                 id="name"
                 name="name"
                 value={userData.name}
@@ -137,7 +137,7 @@ function UserForm() {
               Phone
             </Text>
             <Input
-              type="text"
+              type="number"
               id="phone"
               name="phone"
               value={userData.phone}

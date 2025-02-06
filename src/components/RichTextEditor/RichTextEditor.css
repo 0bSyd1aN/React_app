@@ -1,0 +1,30 @@
+.ProseMirror:focus {
+  outline: 3px solid #007bff;
+  outline-offset: 2px;
+}
+
+.ProseMirror u { 
+  text-decoration: underline; 
+}
+
+.ProseMirror {
+  min-height: 255px; 
+}
+
+.ProseMirror ul, .ProseMirror ol {
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.button[aria-pressed="true"] {
+  background-color: gray;
+  color: white;
+}
+
+.button {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
