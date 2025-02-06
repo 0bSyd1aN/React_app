@@ -1,13 +1,18 @@
 {
-  "name": "frontend",
+  "name": "counter",
+  "homepage": "https://0bSyd1aN.github.io/React_app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "build": "vite build",
+    "test" : "vite test",
     "lint": "eslint .",
     "preview": "vite preview"
+    
   },
   "dependencies": {
     "@chakra-ui/react": "^2.10.5",
