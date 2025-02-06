@@ -5,7 +5,7 @@
 - The application utilizes **Chakra UI** for the frontend design, and **TinyMCE** for the rich text editor integration. 
 - The frontend is built entirely using **React**.
 
-![Demo App](frontend/public/screenshot-for-readme.png) 
+![Demo App](public/screenshot-for-readme.png) 
 
 ## Functional Requirements
 
