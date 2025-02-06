@@ -57,7 +57,7 @@ const RichTextEditor = () => {
       borderWidth="3px"
       borderRadius="md"
       borderColor={'black'}
-      height="400px"
+      height="300px"
       mt={-5}
       mb={-20}
       display="flex"
